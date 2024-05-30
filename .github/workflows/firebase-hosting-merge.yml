@@ -12,4 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build -- --preset=firebase
-      - run: /usr/local/bin/npx firebase-tools@latest deploy --project dataextractblog --json --service-account ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATAEXTRACTBLOG }}
+      - run: /usr/local/bin/npx firebase-tools@latest deploy --project dataextractblog --json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATAEXTRACTBLOG }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
