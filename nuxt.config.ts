@@ -1,5 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Data Extract Blog',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      htmlAttrs: {
+        lang: 'es'
+      }
+    }
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
   nitro: {
     firebase: {
