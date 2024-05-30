@@ -193,8 +193,12 @@
             </div>
           </aside>
         </Section>
+        <Section>
+          <CommentsDisqus :identifier="doc.headline" :url="route.name" :title="doc.title"/>
+        </Section>
         <!-- Scroll to top -->
         <NavScrollTopIcon />
+        
       </template>
       <!-- Error in case not found -->
       <template #not-found>
@@ -208,6 +212,7 @@
 const { $formatDate } = useNuxtApp();
 const { path } = useRoute();
 const cleanPath = path.replace(/\/+$/, "");
+const route = useRoute()
 const { data, error } = await useAsyncData(`content-${cleanPath}`, async () => {
   // Remove a trailing slash in case the browser adds it, it might break the routing
   // fetch document where the document path matches with the cuurent route
