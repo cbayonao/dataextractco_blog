@@ -194,7 +194,7 @@
           </aside>
         </Section>
         <Section>
-          <CommentsDisqus :identifier="doc.headline" :url="route.name" :title="doc.title"/>
+          <!-- <CommentsDisqus :identifier="doc.headline" :url="route.name" :title="doc.title"/> -->
         </Section>
         <!-- Scroll to top -->
         <NavScrollTopIcon />
