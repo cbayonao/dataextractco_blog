@@ -14,7 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build -- --preset=firebase
-      - run: /usr/local/bin/npx firebase-tools@latest deploy --project dataextractblog --json
+      - name: Deploy to Firebase
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DATAEXTRACTBLOG }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo $FIREBASE_SERVICE_ACCOUNT > firebaseServiceAccount.json
+          npx firebase-tools@latest deploy --project dataextractblog --json --token $GITHUB_TOKEN
