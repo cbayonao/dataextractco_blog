@@ -15,6 +15,7 @@ socialImage:
     height: 630
 ---
 
-Web scraping básico
+Extracción de datos cbo
 
 # Que es el web scraping?
+
