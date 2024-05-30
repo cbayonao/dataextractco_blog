@@ -15,7 +15,7 @@ socialImage:
     height: 630
 ---
 
-Extracción de datos cbo
+Extracción de datos cbo danna
 
 # Que es el web scraping?
 
