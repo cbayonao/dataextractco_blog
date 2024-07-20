@@ -1,58 +1,76 @@
 <template>
-  <div class="pagination-list text-typography_primary">
+  <v-container class="pagination-list text-typography_primary">
     <!-- Chevron -->
-    <nuxt-link
+    <v-btn
       v-show="currentPage > 1"
-      class="pagination-item pagination-icon"
       :to="prevLink"
-      ><IconsChevronDown
-        class="transform rotate-90 h-6 w-6"
-        width="24"
-        height="24"
-    /></nuxt-link>
-    <!-- First Page -->
-    <nuxt-link
-      :class="['pagination-item', currentPage === 1 ? 'active' : '']"
-      :to="baseUrl"
-      >1</nuxt-link
+      icon
+      class="pagination-icon"
+      size="small"
+      elevation="0"
     >
+      <v-icon>mdi-chevron-left</v-icon>
+    </v-btn>
+
+    <!-- First Page -->
+    <v-btn
+      :class="{ 'v-btn--active': currentPage === 1 }"
+      :to="baseUrl"
+      size="small"
+      elevation="0"
+    >
+      1
+    </v-btn>
+
     <!-- ... -->
     <span v-show="currentPage > 2" class="pagination-extra"> ... </span>
+
+    <!-- Page Range -->
     <template v-for="page in pageRange" :key="page">
-      <nuxt-link
+      <v-btn
         v-show="page !== 1 && page !== totalPages"
-        :class="['pagination-item', currentPage === page ? 'active' : '']"
+        :class="{ 'v-btn--active': currentPage === page }"
         :to="getPageUrl(page)"
-        >{{ page }}</nuxt-link
+        size="small"
+        elevation="0"
       >
+        {{ page }}
+      </v-btn>
     </template>
+
     <!-- ... -->
     <span v-show="currentPage < totalPages - 1" class="pagination-extra">
       ...
     </span>
 
     <!-- Last Page -->
-    <nuxt-link
+    <v-btn
       v-show="totalPages > 1"
-      :class="['pagination-item', currentPage === totalPages ? 'active' : '']"
+      :class="{ 'v-btn--active': currentPage === totalPages }"
       :to="getPageUrl(totalPages)"
-      >{{ totalPages }}</nuxt-link
+      size="small"
+      elevation="0"
     >
+      {{ totalPages }}
+    </v-btn>
+
     <!-- Chevron -->
-    <nuxt-link
+    <v-btn
       v-show="currentPage < totalPages"
-      class="pagination-item pagination-icon"
       :to="getPageUrl(currentPage + 1)"
-      ><IconsChevronDown
-        class="transform -rotate-90 h-6 w-6"
-        width="24"
-        height="24"
-    /></nuxt-link>
-  </div>
+      icon
+      class="pagination-icon"
+      size="small"
+      elevation="0"
+    >
+      <v-icon>mdi-chevron-right</v-icon>
+    </v-btn>
+  </v-container>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
+
 const props = defineProps({
   currentPage: {
     type: Number,
@@ -60,10 +78,6 @@ const props = defineProps({
   },
   totalPages: {
     type: Number,
-    required: true,
-  },
-  nextPage: {
-    type: Boolean,
     required: true,
   },
   baseUrl: {
@@ -79,6 +93,7 @@ const props = defineProps({
 const getPageUrl = (pageNo) => {
   return `${props.pageUrl}${pageNo}/`;
 };
+
 // Calculate the page range to show
 const pageRange = [
   Math.max(1, props.currentPage - 1),
@@ -95,21 +110,25 @@ const prevLink = computed(() => {
 
 <style scoped>
 .pagination-list {
-  @apply flex flex-row w-full items-center justify-center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
-.pagination-item.active {
-  @apply bg-brand_primary text-background;
+
+.v-btn--active {
+  background-color: var(--v-primary-base) !important;
+  color: var(--v-theme-on-primary) !important;
 }
-.pagination-item {
-  @apply rounded-md border border-typography_primary px-2 py-1 mx-1 w-8 text-center h-full;
-}
-.pagination-item:not(.active):hover {
-  @apply bg-brand_primary/25;
-}
+
 .pagination-extra {
-  @apply w-8 text-lg leading-lg text-center;
+  width: 2rem;
+  text-align: center;
 }
+
 .pagination-icon {
-  @apply w-10 text-center;
+  width: 2.5rem;
+  text-align: center;
 }
 </style>

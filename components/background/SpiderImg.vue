@@ -1,5 +1,5 @@
 <template>
-  <img class="spiderimg" src="/img/blog/spider.png" alt="Spider" />
+  <img class="spiderimg" src="/img/blog/first.png" alt="Spider" />
 </template>
 
 <style>

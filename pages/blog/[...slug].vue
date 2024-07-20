@@ -1,218 +1,223 @@
 <template>
-  <BackgroundSpiderImg />
-  <main class="blog-post-text">
-    <ContentDoc>
-      <template v-slot="{ doc }">
-        <Section id="blog-title" type="header">
-          <div
-            class="border-t-2 pt-8 border-typography_primary flex flex-col md:flex-row items-center md:justify-between md:text-right mb-12 md:mb-8"
-          >
-            <!-- Breadcrumbs -->
-            <nav class="flex" aria-label="Breadcrumb">
-              <ol
-                itemscope
-                itemtype="https://schema.org/BreadcrumbList"
-                class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
-              >
-                <li
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                  class="inline-flex items-center"
+  <v-main>
+    <v-container>
+      <v-card color="rgba(238, 238, 232, 0.5)">
+        <ContentDoc>
+          <template v-slot="{ doc }">
+            <!-- Header Section -->
+            <v-card-title>
+              <v-row class="border-t-2 pt-8 border-typography_primary mb-12">
+                <v-col
+                  cols="12"
+                  md="6"
+                  class="d-flex align-center justify-start"
                 >
-                  <a
-                    itemprop="item"
-                    href="/"
-                    class="inline-flex items-center text-sm font-medium text-dark-700 dark:text-dark-400"
+                  <!-- Breadcrumbs -->
+                  <nav class="flex" aria-label="Breadcrumb">
+                    <ol
+                      itemscope
+                      itemtype="https://schema.org/BreadcrumbList"
+                      class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+                    >
+                      <li
+                        itemprop="itemListElement"
+                        itemscope
+                        itemtype="https://schema.org/ListItem"
+                        class="inline-flex items-center"
+                      >
+                        <a
+                          itemprop="item"
+                          href="/"
+                          class="inline-flex items-center text-sm font-medium text-dark-700 dark:text-dark-400"
+                        >
+                          <svg
+                            class="w-3 h-3 me-2.5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
+                            />
+                          </svg>
+                          <span itemprop="name">Home</span>
+                          <meta itemprop="position" content="1" />
+                        </a>
+                      </li>
+                      <li
+                        aria-current="page"
+                        itemprop="itemListElement"
+                        itemscope
+                        itemtype="https://schema.org/ListItem"
+                      >
+                        <a
+                          itemscope
+                          itemtype="https://schema.org/WebPage"
+                          itemprop="item"
+                          itemid="/blog/"
+                          href="/blog/"
+                          class="flex items-center"
+                        >
+                          <svg
+                            class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 6 10"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 9 4-4-4-4"
+                            />
+                          </svg>
+                          <span
+                            itemprop="name"
+                            class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
+                            >Blog</span
+                          >
+                          <meta itemprop="position" content="2" />
+                        </a>
+                      </li>
+                      <li
+                        itemprop="itemListElement"
+                        itemscope
+                        itemtype="https://schema.org/ListItem"
+                        class="inline-flex items-center"
+                      >
+                        <div class="flex items-center">
+                          <svg
+                            class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 6 10"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="m1 9 4-4-4-4"
+                            />
+                          </svg>
+                          <span
+                            class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
+                            itemprop="name"
+                          >
+                            {{ doc.headline }}
+                          </span>
+                          <meta itemprop="position" content="3" />
+                        </div>
+                      </li>
+                    </ol>
+                  </nav>
+                </v-col>
+                <v-col cols="12" md="6" class="text-right">
+                  <span
+                    class="font-light text-typography_primary/75 dark:text-typography_primary_dark/75"
                   >
-                    <svg
-                      class="w-3 h-3 me-2.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-                      />
-                    </svg>
-                    <span itemprop="name">Home</span>
-                    <meta itemprop="position" content="1" />
-                  </a>
-                </li>
-                <li
-                  aria-current="page"
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                >
-                  <a
-                    itemscope
-                    itemtype="https://schema.org/WebPage"
-                    itemprop="item"
-                    itemid="/blog/"
-                    href="/blog/"
-                    class="flex items-center"
-                  >
-                    <svg
-                      class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span
-                      itemprop="name"
-                      class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
-                      >Blog
-                    </span>
-                    <meta itemprop="position" content="2" />
-                  </a>
-                </li>
-                <li
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                  class="inline-flex items-center"
-                >
-                  <div class="flex items-center">
-                    <svg
-                      class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span 
-                      class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
-                      itemprop="name">
-                      {{ doc.headline }}
-                    </span>
-                    <meta itemprop="position" content="3" />
+                    {{ $formatDate(doc.date) }}
+                  </span>
+                </v-col>
+              </v-row>
+              <!-- Headline -->
+              <v-row class="text-center md:text-left">
+                <v-col>
+                  <div text class="headline text-h3 font-weight-bold no-break">
+                    {{ doc.headline }}
                   </div>
-                </li>
-              </ol>
-            </nav>
-            <!-- Publish date -->
-            <span
-              class="font-light text-typography_primary/75 dark:text-typography_primary_dark/75 mt-2 md:mt-0"
-              >{{ $formatDate(doc.date) }}</span
-            >
-          </div>
-          <!-- Headline -->
-          <h1
-            class="blog-post-text font-bold mb-4 md:mb-6 text-h3 leading-h3 md:text-h1 md:leading-h1 text-center md:text-left"
-          >
-            {{ doc.headline }}
-          </h1>
-          <p
-            class="blog-post-text mb-8 md:w-8/12 md:text-lg md:leading-lg text-center md:text-left"
-          >
-            {{ doc.excerpt }}
-          </p>
-          <div
-            class="border-b-2 pb-8 border-typography_primary dark:border-typography_primary_dark flex flex-col md:flex-row items-center md:justify-between mt-12 md:mt-4"
-          >
-            <!-- Author -->
-            <div class="flex flex-row items-center justify-center">
-              <span class="blog-post-text text-lg leading-lg font-light"
-                >By
-                <a
-                  class="hover:underline italic"
-                  :href="doc.authorUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >{{ doc.author }}</a
-                ></span
+                </v-col>
+              </v-row>
+              <!-- Excerpt -->
+              <v-row class="text-center md:text-left">
+                <v-col>
+                  <p class="mb-8 text-lg leading-lg">
+                    {{ doc.excerpt }}
+                  </p>
+                </v-col>
+              </v-row>
+              <div
+                class="border-b-2 pb-8 border-typography_primary dark:border-typography_primary_dark flex flex-col md:flex-row items-center md:justify-between mt-12 md:mt-4"
               >
-            </div>
-            <!-- Social Share -->
-            <div class="mt-6 md:mt-0">
-              <NavShareIcons
-                :headline="doc.headline"
-                :excerpt="doc.excerpt"
-                :path="doc._path + '/'"
-              />
-            </div>
-          </div>
-        </Section>
-        <!-- Content -->
-        <Section
-          id="main"
-          class="!pt-0 relative grid grid-cols-10 gap-8 lg:gap-12"
-        >
-          <!-- Table of Contents -->
-          <aside class="col-span-full md:col-span-3 md:hidden">
-            <div class="blog-post-text blog-aside-wrapper mb-2">
-              <BlogTableOfContents :links="doc.body?.toc?.links" />
-            </div>
-          </aside>
-          <article class="prose col-span-full md:col-span-7 relative">
-            <!-- Update date -->
-            <span
-              v-show="doc.dateUpdated"
-              class="italic absolute -top-8 text-sm leading-sm font-light text-typography_primary/75 dark:text-typography_primary_dark/75"
-              >(Updated: {{ $formatDate(doc.dateUpdated) }})</span
-            >
-            <!-- Blog content -->
-            <ContentRenderer :value="doc" class="blog-content blog-post-text" />
-          </article>
-          <aside class="col-span-full md:col-span-3 blog-aside h-fit">
-            <!-- Mobile Table of Content -->
-            <div class="!hidden blog-aside-wrapper md:!flex mb-4">
-              <BlogTableOfContents
-                :links="doc.body?.toc?.links"
-                class="blog-post-text"
-              />
-            </div>
-            <!-- Related articles -->
-            <div
-              v-if="data?.surround?.filter((elem) => elem !== null)?.length > 0"
-              class="blog-aside-wrapper"
-            >
-              <BlogRelatedArticles
-                :surround="data?.surround"
-                class="blog-post-text"
-              />
-            </div>
-          </aside>
-        </Section>
-        <Section>
-          <!-- <CommentsDisqus :identifier="doc.headline" :url="route.name" :title="doc.title"/> -->
-        </Section>
-        <!-- Scroll to top -->
-        <NavScrollTopIcon />
-        
-      </template>
-      <!-- Error in case not found -->
-      <template #not-found>
-        <SectionsError />
-      </template>
-    </ContentDoc>
-  </main>
+                <!-- Author and Social Share -->
+                <v-row>
+                  <v-col cols="12" md="6" class="d-flex align-center">
+                    <span class="text-lg font-weight-light">
+                      By
+                      <a
+                        :href="doc.authorUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-hover-underline font-italic"
+                      >
+                        {{ doc.author }}
+                      </a>
+                    </span>
+                  </v-col>
+                  <v-col cols="12" md="6" class="d-flex justify-end">
+                    <NavShareIcons
+                      :headline="doc.headline"
+                      :excerpt="doc.excerpt"
+                      :path="doc._path + '/'"
+                    />
+                  </v-col>
+                </v-row>
+              </div>
+            </v-card-title>
+            <Section id="blog-title" type="header" />
+
+            <!-- Content -->
+            <v-row>
+              <!-- Table of Contents -->
+              <v-col cols="12" md="3" class="d-none d-md-flex">
+                <div class="mb-4 no-break">
+                  <BlogTableOfContents :links="doc.body?.toc?.links" />
+                </div>
+              </v-col>
+              <v-col cols="12" md="7">
+                <div class="prose text-justify">
+                  <span
+                    v-show="doc.dateUpdated"
+                    class="italic text-sm font-light text-typography_primary/75 dark:text-typography_primary_dark/75"
+                  >
+                    (Updated: {{ $formatDate(doc.dateUpdated) }})
+                  </span>
+                  <ContentRenderer :value="doc" />
+                </div>
+              </v-col>
+              <v-col cols="12" md="3" class="d-none d-md-flex">
+                <!-- Related articles -->
+                <div class="mb-4">
+                  <BlogRelatedArticles
+                    :surround="data?.surround"
+                    class="blog-post-text"
+                  />
+                </div>
+              </v-col>
+            </v-row>
+
+            <!-- Scroll to top -->
+            <NavScrollTopIcon />
+          </template>
+          <!-- Error in case not found -->
+          <template #not-found>
+            <SectionsError />
+          </template>
+        </ContentDoc>
+      </v-card>
+    </v-container>
+  </v-main>
 </template>
 
 <script setup>
 const { $formatDate } = useNuxtApp();
 const { path } = useRoute();
 const cleanPath = path.replace(/\/+$/, "");
-const route = useRoute()
+const route = useRoute();
 const { data, error } = await useAsyncData(`content-${cleanPath}`, async () => {
   // Remove a trailing slash in case the browser adds it, it might break the routing
   // fetch document where the document path matches with the cuurent route
@@ -338,17 +343,30 @@ useHead({
 </script>
 
 <style scoped>
-.blog-aside {
-    @apply sticky;
-    top: calc(theme('spacing.nav') + 0.25rem);
+/* Scoped styles for Vuetify components */
+.headline {
+  text-align: center; /* Center headline for small screens */
 }
-.blog-aside-wrapper {
-    @apply flex flex-col border-t-2 border-b-2 border-typography_primary py-4;
+.text-center {
+  text-align: center;
 }
-.blog-post-text {
-    @apply text-typography_primary;
+.text-left {
+  text-align: left;
 }
-.separator {
-    @apply mx-1;
+.text-lg {
+  font-size: 1.125rem; /* Larger text size */
+}
+.leading-lg {
+  line-height: 1.75; /* Larger line height */
+}
+.text-hover-underline:hover {
+  text-decoration: underline;
+}
+.text-justify {
+  text-align: justify;
+}
+.no-break {
+  white-space: normal;
+  word-break: keep-all;
 }
 </style>

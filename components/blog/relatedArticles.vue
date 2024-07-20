@@ -1,28 +1,41 @@
 <template>
-    <div>
-        <span class="blog-aside-title mb-2 block">Continue Reading</span>
-        <ul class="list-none">
-            <template v-for="(other, index) in surround" :key="index">
-                <li v-if="other" class="first:mt-0 mt-4 md:mt-1">
-                    <NuxtLink
-                        :to="other._path + '/'"
-                        class="hover:underline hover:text-brand_primary"
-                        :aria-label="other.headline"
-                    >
-                        {{ other.headline }}
-                    </NuxtLink>
-                    <p class="!no-underline md:hidden text-sm leading-sm md:text-xs md:leading-xs mt-1">{{ other.excerpt }}</p>
-                </li>
-            </template>
-        </ul>
-    </div>
+  <v-container>
+    <v-subheader class="my-2">Continua leyendo</v-subheader>
+    <ul>
+      <template v-for="(other, index) in surround" :key="index">
+        <v-list-item v-if="other">
+          <v-list-item-content>
+            <v-list-item-title>
+              <NuxtLink
+                :to="other._path + '/'"
+                class="hover--text-primary no-break"
+                :aria-label="other.headline"
+              >
+                {{ other.headline }}
+              </NuxtLink>
+            </v-list-item-title>
+            <v-list-item-subtitle class="d-none d-md-block mt-1 no-break">
+              {{ other.excerpt }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+    </ul>
+  </v-container>
 </template>
 
 <script setup>
 defineProps({
-    surround: {
-        type: Array,
-        required: true
-    }
+  surround: {
+    type: Array,
+    required: true,
+  },
 });
 </script>
+
+<style scoped>
+.no-break {
+  white-space: normal;
+  word-break: keep-all;
+}
+</style>

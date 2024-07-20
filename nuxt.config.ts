@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   app: {
     head: {
@@ -10,7 +11,19 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+  build: {
+    transpile: ['vuetify'],
+  },
+  modules: [
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
+    },
+    '@nuxtjs/tailwindcss',
+    '@nuxt/content'
+  ],
   nitro: {
     firebase: {
       gen: 2
@@ -22,7 +35,7 @@ export default defineNuxtConfig({
     highlight: {
         theme: 'github-dark',
         // Define languages you expect to use
-        preload: ['java','javascript']
+        preload: ['java','javascript', 'python', 'c', 'r', 'sql']
     },
     markdown: {
       // Configuring external link processing
@@ -49,5 +62,12 @@ export default defineNuxtConfig({
       }
   },
   sourcemap: false, 
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
+  },
 })

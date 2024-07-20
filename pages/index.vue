@@ -1,22 +1,30 @@
 <template>
-  <BackgroundSpiderImg />
-  <div class="container" style="height: 100vh">
-    <h1 class="text-center">Blog de Data Extract!</h1>
-    <NuxtLink to="/blog/">
-      <button
-        class="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+  <v-container
+    class="d-flex flex-column fill-height align-center justify-center"
+  >
+    <v-row class="d-flex flex-column align-center justify-center text-center">
+      <p class="text-h2 pa-md-8">Blog de Data Extract!</p>
+      <v-btn
+        prepend-icon="mdi-spider-thread"
+        to="/blog/"
+        size="large"
+        variant="outlined"
+        class="mt-4"
       >
-        Leer el blog!
-      </button>
-    </NuxtLink>
-  </div>
+        Vamos al blog!
+      </v-btn>
+    </v-row>
+  </v-container>
 </template>
 
+<script>
+export default {
+  name: "BlogComponent",
+};
+</script>
+
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.fill-height {
+  height: 100vh;
 }
 </style>
