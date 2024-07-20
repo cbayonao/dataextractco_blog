@@ -69,6 +69,10 @@ const flattenLinks = (links) => {
 </script>
 
 <style scoped>
+a {
+  color: #102942;
+  text-decoration: solid;
+}
 .toc-link_3 {
   padding-left: 1rem;
 }

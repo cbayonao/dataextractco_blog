@@ -34,6 +34,10 @@ defineProps({
 </script>
 
 <style scoped>
+a {
+  color: #102942;
+  text-decoration: solid;
+}
 .no-break {
   white-space: normal;
   word-break: keep-all;

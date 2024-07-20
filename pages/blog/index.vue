@@ -1,7 +1,7 @@
 <template>
   <main>
     <BlogHero />
-    <Section id="main" class="!pt-0">
+    <Section>
       <ContentQuery
         path="/blog"
         :only="['headline', 'excerpt', 'date', 'tags', '_path', 'image']"
@@ -15,7 +15,7 @@
       </ContentQuery>
       <BlogPagination
         v-if="data > 1"
-        class="mt-8"
+        class="mt-4"
         :currentPage="1"
         :totalPages="data"
         :nextPage="data > 1"

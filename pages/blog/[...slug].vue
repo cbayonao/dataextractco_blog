@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-container>
+    <v-container fluid>
       <v-card color="rgba(238, 238, 232, 0.5)">
         <ContentDoc>
           <template v-slot="{ doc }">
@@ -13,108 +13,37 @@
                   class="d-flex align-center justify-start"
                 >
                   <!-- Breadcrumbs -->
-                  <nav class="flex" aria-label="Breadcrumb">
-                    <ol
-                      itemscope
-                      itemtype="https://schema.org/BreadcrumbList"
-                      class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
-                    >
-                      <li
-                        itemprop="itemListElement"
-                        itemscope
-                        itemtype="https://schema.org/ListItem"
-                        class="inline-flex items-center"
-                      >
-                        <a
-                          itemprop="item"
-                          href="/"
-                          class="inline-flex items-center text-sm font-medium text-dark-700 dark:text-dark-400"
-                        >
-                          <svg
-                            class="w-3 h-3 me-2.5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-                            />
-                          </svg>
+                  <v-row dense justify="center" align="center">
+                    <v-col cols="12">
+                      <v-breadcrumbs>
+                        <v-breadcrumbs-item :to="{ path: '/' }">
+                          <v-icon left>mdi-home</v-icon>
                           <span itemprop="name">Home</span>
                           <meta itemprop="position" content="1" />
-                        </a>
-                      </li>
-                      <li
-                        aria-current="page"
-                        itemprop="itemListElement"
-                        itemscope
-                        itemtype="https://schema.org/ListItem"
-                      >
-                        <a
-                          itemscope
-                          itemtype="https://schema.org/WebPage"
-                          itemprop="item"
-                          itemid="/blog/"
-                          href="/blog/"
-                          class="flex items-center"
-                        >
-                          <svg
-                            class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 6 10"
-                          >
-                            <path
-                              stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="m1 9 4-4-4-4"
-                            />
-                          </svg>
-                          <span
-                            itemprop="name"
-                            class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
-                            >Blog</span
-                          >
+                        </v-breadcrumbs-item>
+
+                        <v-breadcrumbs-divider>
+                          <v-icon>mdi-chevron-right</v-icon>
+                        </v-breadcrumbs-divider>
+
+                        <v-breadcrumbs-item :to="{ path: '/blog/' }">
+                          <v-icon left>mdi-note-text</v-icon>
+                          <span itemprop="name">Blog</span>
                           <meta itemprop="position" content="2" />
-                        </a>
-                      </li>
-                      <li
-                        itemprop="itemListElement"
-                        itemscope
-                        itemtype="https://schema.org/ListItem"
-                        class="inline-flex items-center"
-                      >
-                        <div class="flex items-center">
-                          <svg
-                            class="rtl:rotate-180 w-3 h-3 text-black-400 mx-1"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 6 10"
-                          >
-                            <path
-                              stroke="currentColor"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="m1 9 4-4-4-4"
-                            />
-                          </svg>
-                          <span
-                            class="ms-1 text-sm font-medium text-black-500 md:ms-2 dark:text-black-400"
-                            itemprop="name"
-                          >
-                            {{ doc.headline }}
-                          </span>
+                        </v-breadcrumbs-item>
+
+                        <v-breadcrumbs-divider>
+                          <v-icon>mdi-chevron-right</v-icon>
+                        </v-breadcrumbs-divider>
+
+                        <v-breadcrumbs-item>
+                          <v-icon left>mdi-file-document</v-icon>
+                          <span itemprop="name">{{ doc.headline }}</span>
                           <meta itemprop="position" content="3" />
-                        </div>
-                      </li>
-                    </ol>
-                  </nav>
+                        </v-breadcrumbs-item>
+                      </v-breadcrumbs>
+                    </v-col>
+                  </v-row>
                 </v-col>
                 <v-col cols="12" md="6" class="text-right">
                   <span
@@ -147,7 +76,7 @@
                 <v-row>
                   <v-col cols="12" md="6" class="d-flex align-center">
                     <span class="text-lg font-weight-light">
-                      By
+                      Por:
                       <a
                         :href="doc.authorUrl"
                         target="_blank"
@@ -184,9 +113,11 @@
                     v-show="doc.dateUpdated"
                     class="italic text-sm font-light text-typography_primary/75 dark:text-typography_primary_dark/75"
                   >
-                    (Updated: {{ $formatDate(doc.dateUpdated) }})
+                    (Actualizado: {{ $formatDate(doc.dateUpdated) }})
                   </span>
-                  <ContentRenderer :value="doc" />
+                  <div class="prose">
+                    <ContentRenderer :value="doc" />
+                  </div>
                 </div>
               </v-col>
               <v-col cols="12" md="3" class="d-none d-md-flex">
@@ -368,5 +299,11 @@ useHead({
 .no-break {
   white-space: normal;
   word-break: keep-all;
+}
+
+/* Optional: Style the code itself */
+pre {
+  margin: 0; /* Remove default margin */
+  font-family: "Courier New", Courier, monospace; /* Monospace font */
 }
 </style>

@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -21,7 +22,6 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    '@nuxtjs/tailwindcss',
     '@nuxt/content'
   ],
   nitro: {
@@ -33,9 +33,9 @@ export default defineNuxtConfig({
     // Configuring code highlighting
     // https://content.nuxtjs.org/api/configuration
     highlight: {
-        theme: 'github-dark',
+        theme: 'dracula', // Puedes cambiar este tema por otro de los soportados
         // Define languages you expect to use
-        preload: ['java','javascript', 'python', 'c', 'r', 'sql']
+        preload: ['java', 'javascript', 'python', 'c', 'r', 'sql']
     },
     markdown: {
       // Configuring external link processing
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
           'rehype-external-links',
           {
             target: '_blank',
-            rel: 'noopener noreferer'
+            rel: 'noopener noreferrer'
           }
         ]
       ]
@@ -53,13 +53,13 @@ export default defineNuxtConfig({
   },
   css: ['/assets/css/main.css'],
   ssr: true,
-    experimental: {
-        payloadExtraction: false
-    },
-    router: {
-      options: {
-          strict: false
-      }
+  experimental: {
+    payloadExtraction: false
+  },
+  router: {
+    options: {
+      strict: false
+    }
   },
   sourcemap: false, 
   devtools: { enabled: true },

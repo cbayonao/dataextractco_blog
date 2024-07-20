@@ -1,57 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Headings */
-
-h1 {
-    @apply text-h1_sm leading-h1_sm mb-6;
-}
-
-h2 {
-    @apply text-h2_sm leading-h2_sm mb-4;
-}
-
-h3 {
-    @apply text-h3_sm leading-h3_sm mb-4;
-}
-
-h4 {
-    @apply text-h4_sm leading-h4_sm mb-2;
-}
-
-h5 {
-    @apply text-h5_sm leading-h5_sm mb-1;
-}
-
-@screen md {
-    h1 {
-        @apply text-h1 leading-h1;
-    }
-
-    h2 {
-        @apply text-h2 leading-h2;
-    }
-
-    h3 {
-        @apply text-h3 leading-h3;
-    }
-
-    h4 {
-        @apply text-h4 leading-h4;
-    }
-
-    h5 {
-        @apply text-h5 leading-h5;
-    }
-}
-
-/* Body Text */
-
-p {
-    @apply text-base leading-base;
-}
+/* General Markdown Styling */
+.prose {
+    /* Apply Vuetify typography styles or custom styles */
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    /* Add spacing and styling for headings */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  
+  .prose p {
+    /* Styling for paragraphs */
+    margin-bottom: 1em;
+  }
+  
+  .prose a {
+    /* Styling for links */
+    color: #102942; /* Vuetify primary color */
+    text-decoration: none;
+  }
+  
+  .prose a:hover {
+    /* Link hover styles */
+    text-decoration: solid;
+  }
+  
+  .prose code {
+    /* Styling for inline code */
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .prose pre {
+    /* Styling for code blocks */
+    background-color: #2e2e2e; /* Dark background */
+    color: #f8f8f2; /* Light text color */
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .prose pre code {
+    /* Styling for code inside pre tags */
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .prose img {
+    /* Styling for images */
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .prose blockquote {
+    /* Styling for blockquotes */
+    border-left: 4px solid #1976d2;
+    padding-left: 1rem;
+    margin: 1em 0;
+    font-style: italic;
+  }
+  
+  .prose ul, .prose ol {
+    /* Styling for lists */
+    margin-left: 1.5em;
+  }
+  
+  .prose table {
+    /* Styling for tables */
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .prose th, .prose td {
+    /* Styling for table cells */
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  

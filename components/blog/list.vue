@@ -1,34 +1,43 @@
 <template>
-  <ul class="grid grid-cols-10 gap-4 text-typography_primary">
-    <li
-      v-for="article in data"
-      :key="article._path"
-      class="col-span-full md:col-span-5 relative rounded-md border-2 border-typography_primary hover:border-text-gray-700 group"
-    >
-      <v-card link :to="article._path + '/'" class="p-4 block relative">
-        <v-img
-          gradient="rgb(246, 233, 126, 30%) 0%,  rgb(23, 23, 49, 70%) 100%"
-          class="white--text align-end"
+  <v-row dense justify="center" align="center">
+    <v-col cols="12" sm="12" md="12">
+      <div class="horizontal-container">
+        <v-card
+          v-for="article in data"
+          :key="article._path"
+          :id="article._path"
+          :to="article._path + '/'"
+          link
+          max-width="90%"
+          class="mx-1"
           height="300px"
-          :src="article.image"
-          cover
-        />
-        <v-card-title class="mb-2">
-          <div class="text-subtitle-1 no-break">
-            {{ article.headline }}
-          </div>
-        </v-card-title>
-        <v-card-subtitle>
-          <div class="text-caption no-break">
-            {{ $formatDate(article.date) }}
-          </div>
-        </v-card-subtitle>
-        <v-card-actions>
+          width="70%"
+          flat
+        >
+          <v-img
+            :src="article.image"
+            gradient="rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)"
+            height="300px"
+            cover
+          >
+            <div class="overlay">
+              <v-card-title class="headline mb-2 white--text">
+                <div class="text-subtitle-1 no-break">
+                  {{ article.headline }}
+                </div>
+              </v-card-title>
 
-        </v-card-actions>
-      </v-card>
-    </li>
-  </ul>
+              <v-card-subtitle class="white--text">
+                <div class="text-caption no-break">
+                  {{ $formatDate(article.date) }}
+                </div>
+              </v-card-subtitle>
+            </div>
+          </v-img>
+        </v-card>
+      </div>
+    </v-col>
+  </v-row>
   <p
     v-if="data.length == 0"
     class="w-full md:w-7/12 text-h3 leading-h3 font-bold dark:text-white"
@@ -59,5 +68,22 @@ onMounted(() => {
 .no-break {
   white-space: normal;
   word-break: keep-all;
+}
+.horizontal-container {
+  display: flex;
+  overflow-x: auto;
+}
+.horizontal-container::-webkit-scrollbar {
+  display: none;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5); /* Dark background for better text visibility */
+  color: white; /* Ensure text is white */
+  padding: 10px; /* Adjust padding as needed */
+  width: 100%; /* Ensure it takes the full width */
+  height: 100%; /* Ensure it takes the full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 </style>
