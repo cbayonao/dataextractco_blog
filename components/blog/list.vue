@@ -1,6 +1,6 @@
 <template>
   <v-row dense justify="center" align="center">
-    <v-col cols="12" sm="12" md="12">
+    <v-col cols="12">
       <div class="horizontal-container">
         <v-card
           v-for="article in data"
@@ -8,15 +8,14 @@
           :id="article._path"
           :to="article._path + '/'"
           link
-          max-width="90%"
-          class="mx-1"
-          height="300px"
-          width="70%"
+          max-width="100%"
+          height="100%"
+          class="mx-1 horizontal-card"
           flat
         >
           <v-img
             :src="article.image"
-            gradient="rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)"
+            gradient="rgb(0, 0, 0, 30%) 0%, rgb(126, 215, 246, 30%) 50%, rgb(23, 23, 49, 70%) 100%"
             height="300px"
             cover
           >
@@ -69,13 +68,32 @@ onMounted(() => {
   white-space: normal;
   word-break: keep-all;
 }
+
 .horizontal-container {
   display: flex;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
+
 .horizontal-container::-webkit-scrollbar {
   display: none;
 }
+
+.horizontal-card {
+  min-width: 50%; /* Ensure each card takes almost the entire width in mobile view */
+}
+
+@media (min-width: 768px) {
+  .horizontal-container {
+    overflow-x: visible; /* No horizontal scroll in larger screens */
+  }
+
+  .horizontal-card {
+    min-width: auto; /* Reset min-width in larger screens */
+  }
+}
+
 .overlay {
   background: rgba(0, 0, 0, 0.5); /* Dark background for better text visibility */
   color: white; /* Ensure text is white */

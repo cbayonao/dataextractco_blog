@@ -81,7 +81,7 @@
                         :href="doc.authorUrl"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-hover-underline font-italic"
+                        class="author"
                       >
                         {{ doc.author }}
                       </a>
@@ -274,6 +274,10 @@ useHead({
 </script>
 
 <style scoped>
+a.author {
+  color: #102942;
+  text-decoration: solid;
+}
 /* Scoped styles for Vuetify components */
 .headline {
   text-align: center; /* Center headline for small screens */

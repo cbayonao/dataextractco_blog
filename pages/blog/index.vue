@@ -2,7 +2,8 @@
   <main>
     <BlogHero />
     <Section>
-      <ContentQuery
+      <div class="horizontal-container">
+        <ContentQuery
         path="/blog"
         :only="['headline', 'excerpt', 'date', 'tags', '_path', 'image']"
         :sort="{
@@ -13,6 +14,7 @@
       >
         <BlogList :data="data" />
       </ContentQuery>
+      </div>
       <BlogPagination
         v-if="data > 1"
         class="mt-4"
@@ -28,7 +30,7 @@
 
 <script setup>
 // Find the number of blogs present
-const blogCountLimit = 6;
+const blogCountLimit = 3;
 const { data } = await useAsyncData(`content-/blog`, async () => {
   const _posts = await queryContent("/blog")
     .only(["headline", "excerpt", "date", "tags", "_path", "image"])
@@ -36,3 +38,12 @@ const { data } = await useAsyncData(`content-/blog`, async () => {
   return Math.ceil(_posts.length / blogCountLimit);
 });
 </script>
+<style scoped>
+.horizontal-container {
+  display: flex;
+  overflow-x: auto;
+}
+.horizontal-container::-webkit-scrollbar {
+  display: none;
+}
+</style>
